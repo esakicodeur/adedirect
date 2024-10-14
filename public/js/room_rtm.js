@@ -35,7 +35,7 @@ let removeMemberFromDom = async (MemberId) => {
     let memberWrapper = document.getElementById(`member__${MemberId}__wrapper`);
     let name = memberWrapper.getElementsByClassName('member__name')[0].textContent;
     addBotMessageToDom(`${name} a quitté la salle.`);
-    
+
     memberWrapper.remove();
 }
 
@@ -63,7 +63,7 @@ let handleChannelMessage = async (messageData, MemberId) => {
 
         if (userIdInDisplayFrame === `user-container-${uid}`) {
             displayName.style.display = null;
-    
+
             for (let i = 0; videoFrames.length > i; i++) {
                 videoFrames[i].style.height = '300px';
                 videoFrames[i].style.width = '300px';
@@ -95,7 +95,7 @@ let addMessageToDom = (name, message) => {
     messagesWrapper.insertAdjacentHTML('beforeend', newMessage);
 
     let lastMessage = document.querySelector('#messages .message__wrapper:last-child');
-    
+
     if (lastMessage) {
         lastMessage.scrollIntoView();
     }
@@ -106,7 +106,7 @@ let addBotMessageToDom = (botMessage) => {
 
     let newMessage = `<div class="message__wrapper">
                         <div class="message__body__bot">
-                            <strong class="message__author__bot">🤖 Pythagore Bot</strong>
+                            <strong class="message__author__bot">🤖 ChatBot</strong>
                             <p class="message__text__bot">${botMessage}</p>
                         </div>
                     </div>`;
@@ -114,7 +114,7 @@ let addBotMessageToDom = (botMessage) => {
     messagesWrapper.insertAdjacentHTML('beforeend', newMessage);
 
     let lastMessage = document.querySelector('#messages .message__wrapper:last-child');
-    
+
     if (lastMessage) {
         lastMessage.scrollIntoView();
     }
