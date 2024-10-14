@@ -16,5 +16,7 @@ form.addEventListener('submit', (e) => {
         inviteCode = String(Math.floor(Math.random() * 10000));
     }
 
-    window.location = `room.html?room=${inviteCode}`;
+    // window.open('/direct/', '_self');
+    window.location = `/direct?room=${inviteCode}`;
+    // window.location = `${route('direct')}?room=${inviteCode}`;
 });

@@ -42,7 +42,7 @@
                 </button>
 
                 @auth
-                    <a href="lobby.html">
+                    <a href="{{ route('lobby') }}">
                         <button type="submit">Créer une salle</button>
                     </a>
                 @endauth
@@ -50,7 +50,7 @@
                 <ul class="flex items-center">
                     @auth
                         <li>
-                            <a href="" class="p-3">Alex</a>
+                            <a href="" class="p-3">{{ Auth::user()->username }}</a>
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" class="inline p-3">
@@ -79,8 +79,8 @@
 
         <script src="{{ asset('js/AgoraRTC_N-4.11.0.js') }}"></script>
         <script src="{{ asset('js/agora-rtm-sdk-1.4.4.js') }}"></script>
-        {{-- <script src="{{ asset('js/room.js') }}"></script> --}}
-        {{-- <script src="{{ asset('js/room_rtm.js') }}"></script>
-        <script src="{{ asset('js/room_rtc.js') }}"></script> --}}
+        <script src="{{ asset('js/room.js') }}"></script>
+        <script src="{{ asset('js/room_rtm.js') }}"></script>
+        <script src="{{ asset('js/room_rtc.js') }}"></script>
     </body>
 </html>

@@ -24,10 +24,10 @@ if (!roomId) {
 let displayName = sessionStorage.getItem('display_name');
 
 if (!displayName) {
-    window.location = 'lobby.html';
+    // window.location = '/lobby';
 }
 
-let localTrack = [];
+let localTracks = [];
 let remoteUsers = {};
 
 let localScreenTracks;
@@ -178,7 +178,7 @@ let toggleScreen = async (e) => {
     if (!sharingScreen) {
         sharingScreen = true;
 
-        screenButton.classList.add('active'); 
+        screenButton.classList.add('active');
         cameraButton.classList.remove('active');
         cameraButton.style.display = 'none';
 
