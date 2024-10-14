@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <main class="container">
+    <main class="w-full">
         <div id="room__container">
 
             <section id="members__container">
-                <div id="members__header">
+                <div id="members__header" class="w-full py-3">
                     <p>Participants</p>
                     <strong id="members__count">0</strong>
                 </div>
 
-                <div id="member__list"></div>
+                <div id="member__list" class="min-h-screen py-3"></div>
             </section>
 
             <section id="stream__container">

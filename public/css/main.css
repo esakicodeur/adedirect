@@ -54,7 +54,7 @@ p, a {
     border-radius: 50%;
 }
 
-#nav {
+/* #nav {
     position: fixed;
     top: 0;
     width: 100%;
@@ -67,7 +67,7 @@ p, a {
     text-decoration: none;
     padding: 16px 5%;
     z-index: 999;
-}
+} */
 
 #logo {
     display: flex;

@@ -23,45 +23,103 @@
 
     </head>
     <body>
-        <header id="nav">
-            <div class="nav--list">
-                <button id="members__button">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <a href="{{ route('home') }}">
-                    <h3 id="logo">
-                        <img src="{{ asset('images/ade.png') }}" alt="Site Logo">
-                        <span>Académie des élites</span>
-                    </h3>
+        <nav class="flex bg-black justify-between items-center position-fixed px-5">
+            <div class="flex">
+                <a href="{{ route('home') }}" id="brand" class="flex gap-2 items-center">
+                    <img src="{{ asset('images/ade.png') }}" alt="" class="w-14 h-14">
                 </a>
             </div>
 
-            <div id="nav__links">
-                <ul class="flex items-center">
-                    @auth
-                        <li>
-                            <a href="" class="p-3">{{ Auth::user()->username }}</a>
-                        </li>
-                        <li>
-                            <form action="{{ route('logout') }}" method="POST" class="inline p-3">
-                                @csrf
 
-                                <button type="submit" class="p-3">Se deconnecter</button>
-                            </form>
-                        </li>
+            <div class="hidden lg:flex gap-5 items-center">
+                @auth
+                    <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="hidden h-16 space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link href="{{ route('dashboard') }}">
+                                {{ Auth::user()->username }}
+                            </x-nav-link>
+                        </div>
+
+                        <div class="relative ml-3">
+                            <div align="right" width="48"  class="inline-flex rounded-md">
+                                <form action="{{ route('logout') }}" method="POST" class="inline p-3">
+                                    @csrf
+                                    <button type="submit" class="px-3">{{ __('Se deconnecter') }}</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    @else
+                    <div class="flex">
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link href="{{ route('dashboard') }}">
+                                {{ __('Login') }}
+                            </x-nav-link>
+
+                            <x-nav-link href="{{ route('register') }}">
+                                {{ __('Register') }}
+                            </x-nav-link>
+                        </div>
+                    </div>
                     @endauth
-
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}" class="p-3">Se connecter</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}" class="p-3">S'inscrire</a>
-                        </li>
-                    @endguest
-                </ul>
             </div>
-        </header>
+
+            <button onclick="handleMenu()" class="lg:hidden md:hidden">
+                <x-zondicon-menu class="h-8 text-white" />
+            </button>
+
+            <div id="nav-dialog" class="hidden fixed z-10 md:hidden bg-white inset-0 p-3">
+                <div id="nav-bar" class="flex justify-between">
+                    <a href="{{ route('home') }}" id="brand" class="flex gap-2 items-center">
+                        <img src="{{ asset('images/ade.png') }}" alt="" class="w-16 h-16">
+                    </a>
+
+                    <button class="p-2 bg-white md:hidden" onclick="handleMenu()">
+                        <x-zondicon-close class="text-gray-900 h-8" />
+                    </button>
+                </div>
+
+                <div class="mt-6">
+
+                <div class="h-[1px] bg-gray-300"></div>
+
+                <div class="w-full mt-6 flex flex-col gap-2">
+                    @auth
+                        <div class="relative ml-3">
+                            <div align="right" width="48"  class="flex flex-col rounded-md">
+                                <div>
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
+                                        {{ Auth::user()->username }}
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <form action="{{ route('logout') }}" method="POST" class="inline p-3">
+                                        @csrf
+                                        <button type="submit" class="p-3">{{ __('Se deconnecter') }}</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                    <div class="flex flex-col space-y-5">
+                            <div>
+                                <x-nav-link href="{{ route('dashboard') }}">
+                                    {{ __('Login') }}
+                                </x-nav-link>
+                            </div>
+
+                            <div>
+                                <x-nav-link href="{{ route('register') }}">
+                                    {{ __('Register') }}
+                                </x-nav-link>
+                            </div>
+                    </div>
+                    @endauth
+                </div>
+            </div>
+        </nav>
 
         {{-- Hero Section --}}
         <main>
@@ -84,6 +142,7 @@
 
         @yield('content')
 
+        <script src="{{ asset('js/script.js') }}"></script>
         {{-- <script src="{{ asset('js/room.js') }}"></script> --}}
     </body>
 </html>
