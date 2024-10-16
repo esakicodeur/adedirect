@@ -35,7 +35,7 @@
                     </button>
                 </div>
 
-                <button id="join-btn">Joindre le Stream</button>
+                <button id="join-btn">Rejoindre le Stream</button>
             </section>
 
             <section id="messages__container">
